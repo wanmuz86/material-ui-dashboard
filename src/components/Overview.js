@@ -30,6 +30,22 @@ const useStyles = makeStyles(theme =>({
         color: theme.palette.text.secondary,
       },
   }));
+  const data = [{
+      item:"Place",
+      number:100
+  },
+  {
+    item:"Revenue",
+    number:10000
+},
+{
+    item:"Monthly Users",
+    number:20000
+},
+{
+    item:"Online",
+    number:53
+}]
 export default function Overview(){
     const classes = useStyles();
     const bull = <span className={classes.bullet}>•</span>;
@@ -41,12 +57,20 @@ export default function Overview(){
           </Typography>
           <Divider/>
           <Grid container spacing={3}>
-        <Grid item xs={12} sm={3}>
-          <Paper className={classes.paper}>xs</Paper>
-        </Grid>
-        <Grid item xs={12} sm={3}>
-        <Paper className={classes.paper}>xs</Paper>
-            </Grid>
+              {
+                  data.map(val=>(
+                    <Grid item xs={12} sm={3}>
+                    <Paper className={classes.paper}>
+                    <Typography variant="h5" component="h2">
+           {val.item}
+          </Typography>
+          <Typography variant="h5" component="p">
+           {val.number}
+          </Typography>
+                    </Paper>
+                  </Grid>
+                  ))
+              }
             </Grid>
         </CardContent>
       </Card>
