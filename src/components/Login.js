@@ -51,13 +51,38 @@ export default class SignIn extends React.Component {
   }
 
   handleClick(){
-    console.log("clicked");
-    console.log(this.state.username)
-    console.log(this.state.password)
+    let opts = {
+      "username":this.state.username,
+      "password":this.state.password
+    }
+    console.log(opts)
+     fetch('http://rest-api-wanmuz.herokuapp.com/api/login', {
+    method: 'post',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(opts)
+  }).then(function(response) {
+    return response.json();
+  }).then(function(data) {
+    console.log(data)
+    if (data.success==true){
+let token = data.token.split(" ")[1]
+console.log(token)
+localStorage.setItem("token",token)
+//location.href = "/dashboard"
+// Redirect to dashboard
+console.log(token)
+    }
+    else{
+
+    }
+  });
   }
   onPasswordChanged(evt){
     this.setState({
-      passwords:evt.target.value
+      password:evt.target.value
     })
   }
   onEmailChanged(evt){
