@@ -47,7 +47,7 @@ export default class SignIn extends React.Component {
     }
     this.handleClick = this.handleClick.bind(this);
     this.onEmailChanged = this.onEmailChanged.bind(this);
-    this.onPasswordChanged = this.onPasswordChanged(this);
+    this.onPasswordChanged = this.onPasswordChanged.bind(this);
   }
 
   handleClick(){
@@ -57,7 +57,7 @@ export default class SignIn extends React.Component {
   }
   onPasswordChanged(evt){
     this.setState({
-      passwords:''
+      passwords:evt.target.value
     })
   }
   onEmailChanged(evt){
