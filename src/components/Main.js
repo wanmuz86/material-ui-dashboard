@@ -25,7 +25,7 @@ export default function Main(props){
         </Grid>
         <Grid item xs={12} sm={9}>
           <Overview />
-          <Booking places={this.props.places}/>
+          <Booking places={props.places}/>
         </Grid>
     </Grid>
     )

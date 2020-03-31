@@ -6,7 +6,7 @@ class Dashboard extends React.Component {
 
     constructor(){
         super();
-        state = {
+        this.state = {
             places:[]
         }
 

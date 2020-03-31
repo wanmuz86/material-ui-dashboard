@@ -60,20 +60,17 @@ export default function Booking(props){
             <TableCell>Hotel name</TableCell>
             <TableCell align="right">Customer name</TableCell>
             <TableCell align="right">Daily price</TableCell>
-            <TableCell align="right">Number of nights</TableCell>
-            <TableCell align="right">Total</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map(row => (
+          {props.places.map(row => (
             <TableRow key={row.name}>
               <TableCell component="th" scope="row">
                 {row.name}
               </TableCell>
-              <TableCell align="right">{row.calories}</TableCell>
-              <TableCell align="right">{row.fat}</TableCell>
-              <TableCell align="right">{row.carbs}</TableCell>
-              <TableCell align="right">{row.protein}</TableCell>
+             <TableCell align="right">{row.city}</TableCell>
+              <TableCell align="right">{row.phonenumber}</TableCell>
+            
             </TableRow>
           ))}
         </TableBody>
