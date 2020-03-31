@@ -70,7 +70,6 @@ export default function Booking(props){
               </TableCell>
              <TableCell align="right">{row.city}</TableCell>
               <TableCell align="right">{row.phonenumber}</TableCell>
-            
             </TableRow>
           ))}
         </TableBody>

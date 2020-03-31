@@ -35,20 +35,29 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SignIn() {
-  const classes = useStyles();
 
+export default class SignIn extends React.Component {
+  //const classes = useStyles();
+  
+  constructor(){
+    super();
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick(){
+    console.log("clicked");
+  }
+  render(){
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
-      <div className={classes.paper}>
-        <Avatar className={classes.avatar}>
+      <div >
+        <Avatar >
           <LockOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
           Sign in
         </Typography>
-        <form className={classes.form} noValidate>
           <TextField
             variant="outlined"
             margin="normal"
@@ -80,7 +89,8 @@ export default function SignIn() {
             fullWidth
             variant="contained"
             color="primary"
-            className={classes.submit}
+            onClick={this.handleClick}
+            
           >
             Sign In
           </Button>
@@ -96,11 +106,13 @@ export default function SignIn() {
               </Link>
             </Grid>
           </Grid>
-        </form>
       </div>
       <Box mt={8}>
         <Copyright />
       </Box>
     </Container>
   );
+  }
+
+  
 }
