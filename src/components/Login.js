@@ -41,12 +41,33 @@ export default class SignIn extends React.Component {
   
   constructor(){
     super();
+    this.state = {
+      username:'',
+      password:''
+    }
     this.handleClick = this.handleClick.bind(this);
+    this.onEmailChanged = this.onEmailChanged.bind(this);
+    this.onPasswordChanged = this.onPasswordChanged(this);
   }
 
   handleClick(){
     console.log("clicked");
+    console.log(this.state.username)
+    console.log(this.state.password)
   }
+  onPasswordChanged(evt){
+    this.setState({
+      passwords:''
+    })
+  }
+  onEmailChanged(evt){
+
+    this.setState({
+      username:evt.target.value
+    })
+  }
+
+  
   render(){
   return (
     <Container component="main" maxWidth="xs">
@@ -63,10 +84,12 @@ export default class SignIn extends React.Component {
             margin="normal"
             required
             fullWidth
-            id="email"
+            id="username"
+            value={this.state.username}
             label="Email Address"
-            name="email"
+            name="username"
             autoComplete="email"
+            onChange={this.onEmailChanged}
             autoFocus
           />
           <TextField
@@ -74,10 +97,12 @@ export default class SignIn extends React.Component {
             margin="normal"
             required
             fullWidth
+            value={this.state.password}
             name="password"
             label="Password"
             type="password"
             id="password"
+            onChange={this.onPasswordChanged}
             autoComplete="current-password"
           />
           <FormControlLabel
