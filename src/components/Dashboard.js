@@ -6,6 +6,9 @@ class Dashboard extends React.Component {
 
     constructor(){
         super();
+        state = {
+            places:[]
+        }
 
     }
     componentDidMount(){
@@ -14,6 +17,9 @@ class Dashboard extends React.Component {
         .then(
             (result) => {
                 console.log(result)
+                this.setState({
+                    places:result.data
+                })
             
             },
             // Note: it's important to handle errors here
@@ -30,7 +36,7 @@ class Dashboard extends React.Component {
 <div>
     <Navbar/>
     <main>
-    <Main/>
+    <Main places={this.state.places}/>
     </main>
     <Copyright/>
     

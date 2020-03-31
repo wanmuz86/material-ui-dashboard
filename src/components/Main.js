@@ -16,7 +16,7 @@ const useStyles = makeStyles(theme =>({
       marginTop:theme.spacing(2)
     },
   }));
-export default function Main(){
+export default function Main(props){
     const classes = useStyles();
     return (
         <Grid container spacing={3}>
@@ -25,7 +25,7 @@ export default function Main(){
         </Grid>
         <Grid item xs={12} sm={9}>
           <Overview />
-          <Booking/>
+          <Booking places={this.props.places}/>
         </Grid>
     </Grid>
     )

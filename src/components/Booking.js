@@ -44,9 +44,9 @@ const useStyles = makeStyles(theme =>({
     createData('Ibis Melaka', 'John', 180, 2, 360),
     createData('IOI puchong ', 'Jimmy', 200, 2, 400),
   ];
-export default function Booking(){
+export default function Booking(props){
     const classes = useStyles();
-    const bull = <span className={classes.bullet}>•</span>;
+  
     return (
         <Card className={classes.root} variant="outlined">
         <CardContent>
