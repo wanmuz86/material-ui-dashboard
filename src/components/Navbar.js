@@ -76,8 +76,9 @@ const classes = useStyles();
                   open={open}
                   onClose={handleClose}
                 >
-                  <MenuItem onClick={handleClose}>Profile</MenuItem>
-                  <MenuItem onClick={handleClose}>My account</MenuItem>
+                  <MenuItem onClick={handleClose}>Add Places</MenuItem>
+                  <MenuItem onClick={handleClose}>Add Customer</MenuItem>
+                  <MenuItem onClick={handleClose}>Add Booking</MenuItem>
                 </Menu>
               </div>
             )}
