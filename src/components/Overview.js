@@ -11,6 +11,8 @@ import Paper from '@material-ui/core/Paper';
 import Container from '@material-ui/core/Container';
 import Home from '@material-ui/icons/Home'
 import AttachMoney from '@material-ui/icons/AttachMoney'
+import SupervisorAccount from '@material-ui/icons/SupervisorAccount'
+import Face from '@material-ui/icons/Face'
 const useStyles = makeStyles(theme =>({
     root: {
       minWidth: 275,
@@ -44,11 +46,13 @@ const useStyles = makeStyles(theme =>({
 },
 {
     item:"Monthly Users",
-    number:20000
+    number:20000,
+    icon:<SupervisorAccount/>
 },
 {
     item:"Online",
-    number:53
+    number:53,
+    icon:<Face/>
 }]
 export default function Overview(){
     const classes = useStyles();
