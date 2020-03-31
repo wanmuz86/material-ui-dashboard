@@ -1,6 +1,7 @@
 import React from 'react';
 import Navbar from '../components/Navbar'
 import Main from '../components/Main'
+import Copyright from '../components/Copyright'
 class Dashboard extends React.Component {
 
     constructor(){
@@ -14,6 +15,7 @@ class Dashboard extends React.Component {
     <main>
     <Main/>
     </main>
+    <Copyright/>
     
 </div>
         );
