@@ -11,9 +11,11 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme =>({
     root: {
       minWidth: 275,
+      paddingTop:theme.spacing(2),
+      marginTop:theme.spacing(2)
     },
     bullet: {
       display: 'inline-block',
@@ -26,7 +28,10 @@ const useStyles = makeStyles({
     pos: {
       marginBottom: 12,
     },
-  });
+    spacing: {
+      marginTop:theme.spacing(2)
+    }
+  }));
 
   function createData(name, calories, fat, carbs, protein) {
     return { name, calories, fat, carbs, protein };
@@ -48,7 +53,7 @@ export default function Booking(){
           <Typography variant="h5" component="h2">
             Latest Booking
           </Typography>
-          <TableContainer component={Paper}>
+          <TableContainer component={Paper} className={classes.spacing}>
       <Table className={classes.table} aria-label="simple table">
         <TableHead>
           <TableRow>

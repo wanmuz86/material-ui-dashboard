@@ -8,14 +8,11 @@ import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider'
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
+import Container from '@material-ui/core/Container';
 const useStyles = makeStyles(theme =>({
     root: {
       minWidth: 275,
-    },
-    bullet: {
-      display: 'inline-block',
-      margin: '0 2px',
-      transform: 'scale(0.8)',
+      marginTop:theme.spacing(2)
     },
     title: {
       fontSize: 14,
@@ -29,6 +26,9 @@ const useStyles = makeStyles(theme =>({
         marginTop:10,
         color: theme.palette.text.secondary,
       },
+      spacing: {
+        marginTop:theme.spacing(2)
+      }
   }));
   const data = [{
       item:"Place",
@@ -48,7 +48,6 @@ const useStyles = makeStyles(theme =>({
 }]
 export default function Overview(){
     const classes = useStyles();
-    const bull = <span className={classes.bullet}>•</span>;
     return (
         <Card className={classes.root} variant="outlined">
         <CardContent>
@@ -56,6 +55,7 @@ export default function Overview(){
            Overview
           </Typography>
           <Divider/>
+          <Container className={classes.spacing}>
           <Grid container spacing={3}>
               {
                   data.map(val=>(
@@ -72,6 +72,7 @@ export default function Overview(){
                   ))
               }
             </Grid>
+            </Container>
         </CardContent>
       </Card>
         )
