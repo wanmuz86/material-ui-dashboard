@@ -3,6 +3,7 @@ import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
+import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import Link from '@material-ui/core/Link';
@@ -66,25 +67,25 @@ export default class AddPlace extends React.Component {
     else {
   return (
     
-    <Container component="main" maxWidth="xs">
+    <Container component="main" maxWidth="md">
       <CssBaseline />
       <div >
         <Avatar >
           <LockOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
-          Sign in
+          Add new Place
         </Typography>
           <TextField
             variant="outlined"
             margin="normal"
             required
             fullWidth
-            id="username"
+            id="name"
             // value={this.state.username}
-            label="Email Address"
-            name="username"
-            autoComplete="email"
+            label="Place name"
+            name="name"
+            autoComplete="text"
             // onChange={this.onEmailChanged}
             autoFocus
           />
@@ -94,13 +95,48 @@ export default class AddPlace extends React.Component {
             required
             fullWidth
             // value={this.state.password}
-            name="password"
-            label="Password"
-            type="password"
-            id="password"
+            name="phonenumber"
+            label="Phone Number"
+            type="phone"
+            id="phonenumber"
             // onChange={this.onPasswordChanged}
-            autoComplete="current-password"
           />
+          <TextField
+          margin="normal"
+          required
+          fullWidth
+          multiline
+          rows="5"
+          name="description"
+          label="Enter Description"
+          type="text"
+          id="description"
+          />
+          <TextField
+            variant="outlined"
+            margin="normal"
+            required
+            fullWidth
+            // value={this.state.password}
+            name="city"
+            label="City"
+            type="text"
+            id="city"
+            // onChange={this.onPasswordChanged}
+          />
+          <TextField
+            variant="outlined"
+            margin="normal"
+            required
+            fullWidth
+            // value={this.state.password}
+            name="categories"
+            label="Categories"
+            type="text"
+            id="categories"
+            // onChange={this.onPasswordChanged}
+          />
+
           <FormControlLabel
             control={<Checkbox value="remember" color="primary" />}
             label="Remember me"
@@ -113,20 +149,9 @@ export default class AddPlace extends React.Component {
             onClick={this.handleClick}
             
           >
-            Sign In
+           Add Place
           </Button>
-          <Grid container>
-            <Grid item xs>
-              <Link href="#" variant="body2">
-                Forgot password?
-              </Link>
-            </Grid>
-            <Grid item>
-              <Link href="#" variant="body2">
-                {"Don't have an account? Sign Up"}
-              </Link>
-            </Grid>
-          </Grid>
+        
       </div>
       <Box mt={8}>
         <Copyright />
