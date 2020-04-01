@@ -44,17 +44,58 @@ export default class AddPlace extends React.Component {
   constructor(){
     super();
     this.state = {
-   token:''
+        name:'',
+        phonenumber:'',
+        description:'',
+        categories:'',
+        city:'',
+        token:''
     }
-   
+   this.onCategoriesChanged = this.onCategoriesChanged.bind(this);
+   this.onNameChanged = this.onNameChanged.bind(this);
+   this.onPhoneChanged = this.onPhoneChanged.bind(this);
+   this.onDescriptionChanged = this.onDescriptionChanged.bind(this);
+   this.onCityChanged = this.onCityChanged.bind(this);
+   this.handleClick = this.handleClick.bind(this);
   }
 
   handleClick(){
-    
+    let opts = {
+        "name":this.state.name,
+        "description":this.state.description,
+        "city":this.state.city,
+        "categories":this.state.categories,
+        "phonenumber":this.state.phonenumber
+      }
+      console.log(opts);
+  }
+  onCategoriesChanged(evt){
+      this.setState({
+        categories:evt.target.value
+    })
+  }
+
+  onNameChanged(evt){
+    this.setState({
+        name:evt.target.value
+    })
   }
   
-
-  
+  onPhoneChanged(evt){
+    this.setState({
+        phonenumber:evt.target.value
+    })
+  }
+  onDescriptionChanged(evt){
+    this.setState({
+        description:evt.target.value
+    })
+  }
+  onCityChanged(evt){
+    this.setState({
+        city:evt.target.value
+    })
+  }
   render(){
     if (this.state.token){
       return (
@@ -82,11 +123,11 @@ export default class AddPlace extends React.Component {
             required
             fullWidth
             id="name"
-            // value={this.state.username}
+             value={this.state.name}
             label="Place name"
             name="name"
             autoComplete="text"
-            // onChange={this.onEmailChanged}
+            onChange={this.onNameChanged}
             autoFocus
           />
           <TextField
@@ -94,12 +135,12 @@ export default class AddPlace extends React.Component {
             margin="normal"
             required
             fullWidth
-            // value={this.state.password}
+            value={this.state.phonenumber}
             name="phonenumber"
             label="Phone Number"
             type="phone"
             id="phonenumber"
-            // onChange={this.onPasswordChanged}
+             onChange={this.onPhoneChanged}
           />
           <TextField
           margin="normal"
@@ -107,39 +148,36 @@ export default class AddPlace extends React.Component {
           fullWidth
           multiline
           rows="5"
+          value={this.state.description}
           name="description"
           label="Enter Description"
           type="text"
           id="description"
+          onChange={this.onDescriptionChanged}
           />
           <TextField
             variant="outlined"
             margin="normal"
             required
             fullWidth
-            // value={this.state.password}
+             value={this.state.city}
             name="city"
             label="City"
             type="text"
             id="city"
-            // onChange={this.onPasswordChanged}
+            onChange={this.onCityChanged}
           />
           <TextField
             variant="outlined"
             margin="normal"
             required
             fullWidth
-            // value={this.state.password}
+             value={this.state.categories}
             name="categories"
             label="Categories"
             type="text"
             id="categories"
-            // onChange={this.onPasswordChanged}
-          />
-
-          <FormControlLabel
-            control={<Checkbox value="remember" color="primary" />}
-            label="Remember me"
+            onChange={this.onCategoriesChanged}
           />
           <Button
             type="submit"
