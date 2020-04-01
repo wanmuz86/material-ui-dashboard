@@ -67,7 +67,27 @@ export default class AddPlace extends React.Component {
         "categories":this.state.categories,
         "phonenumber":this.state.phonenumber
       }
-      console.log(opts);
+let token = localStorage.getItem("token")
+      fetch('http://rest-api-wanmuz.herokuapp.com/api/places', {
+    method: 'post',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Authorization':'Bearer '+token
+    },
+    body: JSON.stringify(opts)
+  }).then((response) => {
+    return response.json();
+  }).then((data) => {
+    console.log(data)
+//     if (data.success==true){
+// let token = data.token.split(" ")[1]
+// console.log(token)
+// localStorage.setItem("token",token)
+// this.setState({
+//   token:token
+ })
+     
   }
   onCategoriesChanged(evt){
       this.setState({
