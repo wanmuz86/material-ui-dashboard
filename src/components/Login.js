@@ -13,6 +13,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Copyright from '../components/Copyright';
+import { Redirect } from 'react-router-dom';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -43,7 +44,8 @@ export default class SignIn extends React.Component {
     super();
     this.state = {
       username:'',
-      password:''
+      password:'',
+      token:''
     }
     this.handleClick = this.handleClick.bind(this);
     this.onEmailChanged = this.onEmailChanged.bind(this);
@@ -63,17 +65,17 @@ export default class SignIn extends React.Component {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify(opts)
-  }).then(function(response) {
+  }).then((response) => {
     return response.json();
-  }).then(function(data) {
+  }).then((data) => {
     console.log(data)
     if (data.success==true){
 let token = data.token.split(" ")[1]
 console.log(token)
 localStorage.setItem("token",token)
-//location.href = "/dashboard"
-// Redirect to dashboard
-console.log(token)
+this.setState({
+  token:token
+})
     }
     else{
 
@@ -94,7 +96,17 @@ console.log(token)
 
   
   render(){
+    if (this.state.token){
+      return (
+        <Redirect to={{
+          pathname:"/dashboard"
+        }}
+        />
+      );
+    }
+    else {
   return (
+    
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div >
@@ -163,6 +175,7 @@ console.log(token)
     </Container>
   );
   }
+}
 
   
 }

@@ -2,16 +2,24 @@ import React from 'react';
 import Navbar from '../components/Navbar'
 import Main from '../components/Main'
 import Copyright from '../components/Copyright'
+import { Redirect } from 'react-router-dom';
 class Dashboard extends React.Component {
 
     constructor(){
         super();
         this.state = {
-            places:[]
+            places:[],
+            token:''
         }
 
     }
     componentDidMount(){
+        let token = localStorage.getItem('token')
+        if (token){
+        this.setState({
+            token:token
+        })
+    }
         fetch(`https://rest-api-wanmuz.herokuapp.com/api/places`)
         .then(res => res.json())
         .then(
@@ -32,6 +40,12 @@ class Dashboard extends React.Component {
     }
 
     render() {
+        if (this.state.token == null || this.state.token == ''){
+         return (
+       <div>Unauthorized</div>
+         )
+        }
+        else {
         return (
 <div>
     <Navbar/>
@@ -43,6 +57,7 @@ class Dashboard extends React.Component {
 </div>
         );
     }
+}
 }
 
 export default Dashboard;
